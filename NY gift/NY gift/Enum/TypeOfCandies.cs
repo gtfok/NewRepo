@@ -12,5 +12,6 @@ namespace NY_gift.Enum
         Caramel,
         Iris,
         Lollipop,
+        Zhele,
     }
 }

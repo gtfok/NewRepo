@@ -10,11 +10,14 @@ namespace NY_gift.Classes
     public class Chocolate : Sweet
     {
         public TypeOfChocolate TypeOfChocolate;
-        public Chocolate(string name, double weight, string item, double sugar, double calories, string typeOfSweetness, TypeOfChocolate typeofchoco )
-            : base(name, weight, item, sugar, calories, typeOfSweetness)
+        public Chocolate(string name, double weight, double sugar, double calories,  TypeOfChocolate typeofchoco )
+            : base(name, weight, sugar, calories )
         {
             TypeOfChocolate = typeofchoco;
-            typeOfSweetness = "Chocolate";
+            
         }
+        public override string TypeOfSweetness => "Chocolate";
+        
+        public override string ItemInfo => string.Format(" (0), weight: (1),sugar: (2),calories: (3)", Name, Weight, SugarPerUnit, Calories);
     }
 }

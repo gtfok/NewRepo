@@ -9,24 +9,21 @@ namespace NY_gift.Classes
 {
     public abstract class Sweet : ISweetness
     {
+        private double sugar;
+
         public double SugarPerUnit { get; }
         public string Name { get; }
         public double Calories { get; }
-        public string TypeOfSweetness { get; }
         public double Weight { get; }
-        public string ItemInfo { get; }
-
-       
-
-        public Sweet(string name, double weight, string item, double sugar, double calories, string typeOfSweetness)
+        public Sweet(string name, double weight,  double sugar, double calories)
         {
             Name = name;
             Weight = weight;
-            ItemInfo = item;
-            TypeOfSweetness = typeOfSweetness;
             SugarPerUnit = sugar;
             Calories = calories;
         }
 
+        public abstract string TypeOfSweetness { get; }
+    public abstract string ItemInfo { get; }
     }
 }

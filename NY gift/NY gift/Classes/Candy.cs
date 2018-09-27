@@ -11,12 +11,15 @@ namespace NY_gift.Classes
     {
         public TypeOfCandies TypeOfCandies;
 
-        public Candy(string name, double weight, string item, double sugar, double calories, string typeOfSweetness, TypeOfCandies candy)
-        : base(name, weight, item, sugar, calories, typeOfSweetness)
+        public Candy(string name, double weight, double sugar, double calories, TypeOfCandies candy)
+        : base(name, weight, sugar, calories)
         {
             TypeOfCandies = candy;
-            typeOfSweetness = "Candy";
         }
-}
+
+        public override string TypeOfSweetness => "Candy";
+        
+        public override string ItemInfo => string.Format(" {0}, weight: {1},sugar: {2},calories: {3}",Name,  Weight,SugarPerUnit,Calories);
+    }
 
 }
