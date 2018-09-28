@@ -9,35 +9,44 @@ namespace NY_gift.Classes
 {
     public class Gift : INYGift
     {
+        private ICollection<ISweetness> swetnessitems; 
+        public IEnumerable<ISweetness>Items
+        {
+            get { return swetnessitems; }
+        }
         public double GiftWeight { get; }
         public int CountOfSweet { get; }
         public string NameOfGift { get; }
 
-         void AddSweet(Sweet sweets)
+        public  void AddSweet(Sweet sweets)
+        {
+            swetnessitems.Add(sweets);
+        }
+
+       
+        public void DelSweet(Sweet sweets)
         {
 
         }
 
-        void INYGift.AddSweet(Sweet sweets)
+        public IEnumerable<ISweetness> SortSweetnessByWeight()
         {
             throw new NotImplementedException();
         }
 
-        void DelSweet(Sweet sweets)
-        {
-
-        }
-
-        void INYGift.DelSweet(Sweet sweets)
+        public IEnumerable<ISweetness> FindSweetnessBySugar(int min, int max)
         {
             throw new NotImplementedException();
         }
-        public Gift( double weight, int count, string name)
+
+        public Gift(string name, ICollection<ISweetness> items)
+
         {
-            GiftWeight = weight;
-            CountOfSweet = count;
+            
             NameOfGift = name;
+            swetnessitems = items;
         }
+    
     }       
                 
 

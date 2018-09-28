@@ -13,7 +13,12 @@ namespace NY_gift.Interfaces
         double GiftWeight { get; }
         int CountOfSweet { get; }
         string NameOfGift { get; }
+        IEnumerable<ISweetness> Items { get; };
+        IEnumerable<ISweetness> SortSweetnessByWeight();
+        IEnumerable<ISweetness> FindSweetnessBySugar(int min, int max);
+
         void AddSweet(Sweet sweets);
         void DelSweet(Sweet sweets);
+
     }
 }
