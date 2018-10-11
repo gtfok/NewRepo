@@ -14,8 +14,7 @@ namespace NY_gift.Classes
         {
             get { return swetnessitems; }
         }
-        public double GiftWeight { get; }
-        public int CountOfSweet { get; }
+       
         public string NameOfGift { get; }
 
         public  void AddSweet(Sweet sweets)
@@ -26,17 +25,38 @@ namespace NY_gift.Classes
        
         public void DelSweet(Sweet sweets)
         {
+            swetnessitems.Remove(sweets);
 
         }
+        public int CountOfSweet
+        {
+            get {return swetnessitems.Count();}
+
+        }
+        public double GiftWeight
+            {
+            get {
+                if (swetnessitems != null)
+                    {
+                        return swetnessitems.Sum(x=> x.Weight);
+
+                    }
+                else{
+                        throw new InvalidOperationException("Container cannot be full");
+                    }
+                }
+            }
 
         public IEnumerable<ISweetness> SortSweetnessByWeight()
         {
-            throw new NotImplementedException();
+            var temp = swetnessitems.OrderBy(x => x.Weight).ToArray();
+            return temp;
         }
 
-        public IEnumerable<ISweetness> FindSweetnessBySugar(int min, int max)
+        public IEnumerable<ISweetness> FindSweetnessBySugar(double min, double max)
         {
-            throw new NotImplementedException();
+            return swetnessitems.Where(x =>(x.SugarPerUnit >= min)
+            && (x.SugarPerUnit <= max)).ToList();
         }
 
         public Gift(string name, ICollection<ISweetness> items)
@@ -46,6 +66,7 @@ namespace NY_gift.Classes
             NameOfGift = name;
             swetnessitems = items;
         }
+
     
     }       
                 
